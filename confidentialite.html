@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confidentialité — PADDOCKLE</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="legal">
+  <header class="topbar">
+    <a class="logo" href="./">
+      <span class="logo-flag" aria-hidden="true"></span>
+      <span class="logo-text">PADDOCKLE</span>
+    </a>
+    <a class="btn-pro btn-back" href="./">← Jeu</a>
+  </header>
+  <div class="kerb" aria-hidden="true"></div>
+
+  <main class="legal-main">
+    <p><a href="#english">English version ↓</a></p>
+
+    <h1 class="title">Politique de confidentialité</h1>
+    <p class="hint">Dernière mise à jour : [DATE DE MISE EN LIGNE]</p>
+
+    <h2 class="subtitle">En bref</h2>
+    <ul>
+      <li>Pas de compte, pas de cookie publicitaire, pas de Google Analytics.</li>
+      <li>Tes scores sont enregistrés avec un identifiant au hasard, sans ton nom ni ton adresse IP.</li>
+      <li>Ton email n'est demandé que si tu veux être prévenu du lancement de « Pro ».</li>
+    </ul>
+
+    <h2 class="subtitle">Responsable du traitement</h2>
+    <p>
+      Philippe DHO, [MON ADRESSE DE DOMICILIATION] —
+      <a href="mailto:webworksgroup@gmail.com">webworksgroup@gmail.com</a>
+    </p>
+
+    <h2 class="subtitle">1. Scores des parties</h2>
+    <p>
+      <strong>Données :</strong> un identifiant aléatoire créé sur ton appareil, la date du défi, ton score et ta langue.
+      Aucun nom, aucun email, aucune adresse IP n'est enregistré dans ce tableau.<br>
+      <strong>But :</strong> calculer « Tu fais mieux que X % des joueurs » et mesurer la fréquentation
+      (nombre de joueurs par jour, joueurs qui reviennent). Les scores individuels ne sont jamais affichés aux autres joueurs.<br>
+      <strong>Base légale :</strong> intérêt légitime de l'éditeur (mesure d'audience anonyme, nécessaire au fonctionnement du jeu).<br>
+      <strong>Durée :</strong> 13 mois, puis suppression.<br>
+      <strong>Tu peux refuser</strong> d'être compté avec le bouton ci-dessous : tes prochaines parties ne seront plus envoyées.
+    </p>
+
+    <div class="card optout" id="optout">
+      <p><strong>Ton identifiant anonyme :</strong> <code id="player-id">—</code></p>
+      <p id="optout-status"></p>
+      <button type="button" class="btn btn-ghost btn-block" id="optout-btn"></button>
+      <p class="hint">Pour faire supprimer les parties déjà enregistrées, envoie cet identifiant par email.</p>
+    </div>
+
+    <h2 class="subtitle">2. Liste d'attente « Pro »</h2>
+    <p>
+      <strong>Données :</strong> ton email, ta langue, ton accord pour être contacté et la date d'inscription.<br>
+      <strong>But :</strong> te prévenir du lancement de l'offre Pro, et rien d'autre. Ton email n'est ni vendu ni prêté.<br>
+      <strong>Base légale :</strong> ton consentement (case à cocher). Tu peux le retirer à tout moment.<br>
+      <strong>Durée :</strong> jusqu'à ta désinscription, et au plus tard [DURÉE — ex. 3 ans] après ton inscription.
+    </p>
+
+    <h2 class="subtitle">3. Ce qui reste sur ton appareil</h2>
+    <p>
+      Le site enregistre dans la mémoire de ton navigateur (« stockage local », pas de cookie) : ton identifiant anonyme,
+      ta langue, ta série de jours joués, ton meilleur score et ta partie en cours. Ces informations restent sur ton
+      appareil. Tu peux les effacer à tout moment en vidant les données du site dans ton navigateur.
+    </p>
+
+    <h2 class="subtitle">4. Prestataires</h2>
+    <ul>
+      <li><strong>Supabase, Inc.</strong> — base de données (scores anonymes, liste Pro). Serveurs situés dans l'Union européenne (région : [RÉGION SUPABASE — ex. Francfort]).</li>
+      <li><strong>Cloudflare, Inc.</strong> — hébergement et diffusion du site.</li>
+    </ul>
+    <p>
+      Ces prestataires agissent uniquement sur instruction de l'éditeur. Pour leur fonctionnement et leur sécurité,
+      ils peuvent traiter brièvement des données techniques de connexion (comme l'adresse IP) dans leurs journaux.
+      Ce sont des sociétés américaines : les éventuels transferts hors de l'Union européenne sont encadrés par les
+      garanties prévues par le RGPD (clauses contractuelles types de la Commission européenne et/ou EU-US Data Privacy Framework).
+    </p>
+
+    <h2 class="subtitle">5. Tes droits</h2>
+    <p>
+      Tu peux demander l'accès, la correction ou la suppression de tes données, t'opposer à leur utilisation,
+      en limiter l'usage ou en obtenir une copie. Écris à
+      <a href="mailto:webworksgroup@gmail.com">webworksgroup@gmail.com</a> : réponse sous un mois maximum.
+      Pour être retiré de la liste Pro, il suffit d'envoyer l'email concerné.
+      Tu peux aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).
+    </p>
+
+    <hr class="legal-sep" id="english">
+
+    <h1 class="title">Privacy policy</h1>
+    <p class="hint">Last updated: [LAUNCH DATE]</p>
+
+    <h2 class="subtitle">In short</h2>
+    <ul>
+      <li>No account, no advertising cookies, no Google Analytics.</li>
+      <li>Your scores are stored with a random ID, without your name or IP address.</li>
+      <li>Your email is only asked for if you want to hear about the "Pro" launch.</li>
+    </ul>
+
+    <h2 class="subtitle">Controller</h2>
+    <p>Philippe DHO — <a href="mailto:webworksgroup@gmail.com">webworksgroup@gmail.com</a></p>
+
+    <h2 class="subtitle">1. Game scores</h2>
+    <p>
+      <strong>Data:</strong> a random ID created on your device, challenge date, score and language. No name, email or IP address.<br>
+      <strong>Purpose:</strong> the "better than X% of players" figure and anonymous audience measurement. Individual scores are never shown to other players.<br>
+      <strong>Legal basis:</strong> legitimate interest. <strong>Retention:</strong> 13 months.<br>
+      You can opt out with the button above ("Ne pas compter mes parties" / "Don't count my games").
+    </p>
+
+    <h2 class="subtitle">2. "Pro" waiting list</h2>
+    <p>
+      <strong>Data:</strong> email, language, consent and sign-up date. <strong>Purpose:</strong> notifying you when Pro launches, nothing else.
+      Never sold or shared. <strong>Legal basis:</strong> your consent, which you can withdraw at any time.
+      <strong>Retention:</strong> until you unsubscribe, and at most [DURATION — e.g. 3 years] after sign-up.
+    </p>
+
+    <h2 class="subtitle">3. Stored on your device</h2>
+    <p>Your anonymous ID, language, streak, best score and current game are kept in your browser's local storage (not cookies). Clear the site data in your browser to remove them.</p>
+
+    <h2 class="subtitle">4. Service providers</h2>
+    <p>
+      Supabase, Inc. (database, EU servers — region: [SUPABASE REGION]) and Cloudflare, Inc. (hosting). They may briefly
+      process technical connection data (such as IP addresses) for operation and security. Any transfer outside the EU
+      is covered by GDPR safeguards (EU Standard Contractual Clauses and/or the EU-US Data Privacy Framework).
+    </p>
+
+    <h2 class="subtitle">5. Your rights</h2>
+    <p>
+      Access, rectification, erasure, objection, restriction and portability: email
+      <a href="mailto:webworksgroup@gmail.com">webworksgroup@gmail.com</a> (reply within one month).
+      You can also complain to the French data protection authority, the CNIL (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).
+    </p>
+  </main>
+
+  <footer class="footer">
+    <p>Site de fans non affilié aux championnats cités. · Fan site, not affiliated with the championships mentioned.</p>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/legal.js"></script>
+</body>
+</html>

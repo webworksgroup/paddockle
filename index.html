@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PADDOCKLE</title>
+  <meta name="description" content="Le jeu quotidien des sports mécaniques : 5 lieux à retrouver sur le globe, chaque jour. Daily motorsport geography game.">
+  <meta name="theme-color" content="#06090d">
+  <meta property="og:title" content="PADDOCKLE">
+  <meta property="og:description" content="5 lieux de sports mécaniques à retrouver sur le globe, chaque jour.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/barlow-condensed-latin-800-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-screen="screen-loading">
+
+  <header class="topbar">
+    <a class="logo" href="./" aria-label="PADDOCKLE">
+      <span class="logo-flag" aria-hidden="true"></span>
+      <span class="logo-text" data-game-name>PADDOCKLE</span>
+    </a>
+    <div class="topbar-actions">
+      <button type="button" class="btn-pro" data-open-pro>Pro</button>
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang_label">
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+  <div class="kerb" aria-hidden="true"></div>
+
+  <main>
+    <!-- Chargement -->
+    <section id="screen-loading" class="screen screen--center">
+      <div class="spinner" aria-hidden="true"></div>
+      <p data-i18n="loading">Chargement…</p>
+    </section>
+
+    <!-- Accueil -->
+    <section id="screen-home" class="screen" hidden>
+      <div class="card home-card">
+        <p class="kicker" id="home-date"></p>
+        <h1 class="title" data-i18n="home_title">Où ça s'est passé ?</h1>
+        <ol class="rules">
+          <li><span class="rule-num">1</span><span data-i18n="home_rule_1"></span></li>
+          <li><span class="rule-num">2</span><span data-i18n="home_rule_2"></span></li>
+          <li><span class="rule-num">3</span><span data-i18n="home_rule_3"></span></li>
+        </ol>
+        <p class="hint" data-i18n="home_hint"></p>
+        <button type="button" class="btn btn-primary btn-xl" id="btn-play">Jouer</button>
+        <p class="streak-pill" id="home-streak" hidden></p>
+      </div>
+      <ul class="disciplines" aria-hidden="true">
+        <li data-i18n="disc_monoplace"></li>
+        <li data-i18n="disc_vitesse_moto"></li>
+        <li data-i18n="disc_superbike"></li>
+        <li data-i18n="disc_rallye"></li>
+        <li data-i18n="disc_supercross"></li>
+        <li data-i18n="disc_trial"></li>
+        <li data-i18n="disc_endurance_moto"></li>
+      </ul>
+    </section>
+
+    <!-- Pas de défi aujourd'hui -->
+    <section id="screen-empty" class="screen screen--center" hidden>
+      <div class="card">
+        <p class="big-emoji" aria-hidden="true">🏁</p>
+        <h1 class="title" data-i18n="empty_title"></h1>
+        <p data-i18n="empty_text"></p>
+        <p class="countdown-label" data-i18n="next_in"></p>
+        <p class="countdown" data-countdown>--:--:--</p>
+        <button type="button" class="btn btn-primary" data-new-challenge hidden data-i18n="reload_button"></button>
+      </div>
+    </section>
+
+    <!-- Erreur -->
+    <section id="screen-error" class="screen screen--center" hidden>
+      <div class="card">
+        <p class="big-emoji" aria-hidden="true">🚧</p>
+        <h1 class="title" id="error-title"></h1>
+        <p id="error-text"></p>
+        <button type="button" class="btn btn-primary" id="btn-retry" data-i18n="retry_button"></button>
+      </div>
+    </section>
+
+    <!-- Partie -->
+    <section id="screen-game" class="screen screen--game" hidden>
+      <div id="globe" class="globe"></div>
+      <div id="globe-loading" class="globe-loading" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <p data-i18n="globe_loading"></p>
+      </div>
+
+      <div class="hud" id="hud">
+        <div class="hud-top">
+          <span class="chip chip-strong" id="q-number"></span>
+          <span class="chip chip-accent" id="q-multiplier"></span>
+          <span class="chip" id="q-discipline"></span>
+          <span class="hud-score" id="q-score"></span>
+        </div>
+        <p class="q-text" id="q-text" aria-live="polite"></p>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+      </div>
+
+      <p class="tap-hint" id="tap-hint" data-i18n="tap_hint"></p>
+
+      <div class="result" id="result" hidden aria-live="polite">
+        <div class="result-head">
+          <span class="result-badge" id="r-badge"></span>
+          <span class="result-points" id="r-points"></span>
+          <span class="result-distance" id="r-distance"></span>
+        </div>
+        <p class="result-place" id="r-place"></p>
+        <p class="result-anecdote" id="r-anecdote"></p>
+        <button type="button" class="btn btn-primary btn-block" id="btn-next"></button>
+      </div>
+    </section>
+
+    <!-- Fin de partie -->
+    <section id="screen-end" class="screen" hidden>
+      <div class="card end-card">
+        <p class="kicker" id="end-date"></p>
+        <h1 class="title" data-i18n="end_title"></h1>
+        <p class="end-score"><span id="end-score">0</span><small>/ 1000</small></p>
+        <p class="end-badges" id="end-badges"></p>
+        <p class="end-percent" id="end-percent"></p>
+        <button type="button" class="btn btn-primary btn-xl" id="btn-share" data-i18n="share_button"></button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong id="stat-streak">0</strong><span data-i18n="stat_streak"></span></div>
+        <div class="stat"><strong id="stat-best">0</strong><span data-i18n="stat_best"></span></div>
+        <div class="stat"><strong id="stat-played">0</strong><span data-i18n="stat_played"></span></div>
+      </div>
+
+      <div class="card">
+        <p class="countdown-label" data-i18n="next_in"></p>
+        <p class="countdown" data-countdown>--:--:--</p>
+        <button type="button" class="btn btn-primary" data-new-challenge hidden data-i18n="reload_button"></button>
+      </div>
+
+      <div class="card">
+        <h2 class="subtitle" data-i18n="recap_title"></h2>
+        <ul class="recap" id="recap"></ul>
+      </div>
+
+      <div class="card pro-teaser">
+        <h2 class="subtitle" data-i18n="pro_teaser_title"></h2>
+        <p data-i18n="pro_teaser_text"></p>
+        <button type="button" class="btn btn-ghost" data-open-pro data-i18n="pro_teaser_button"></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footer_disclaimer">Site de fans non affilié aux championnats cités.</p>
+    <p>
+      <a href="mentions-legales.html" data-i18n="footer_legal">Mentions légales</a>
+      ·
+      <a href="confidentialite.html" data-i18n="footer_privacy">Confidentialité</a>
+    </p>
+  </footer>
+
+  <!-- Fenêtre "Pro" -->
+  <dialog id="pro-dialog" class="dialog" aria-labelledby="pro-title">
+    <div class="dialog-inner">
+      <button type="button" class="dialog-close" data-close-pro data-i18n-attr="aria-label:pro_close">✕</button>
+      <p class="pro-tag">PRO</p>
+      <h2 id="pro-title" class="title" data-i18n="pro_title"></h2>
+      <p data-i18n="pro_text"></p>
+      <p class="pro-price" data-i18n="pro_price"></p>
+      <p data-i18n="pro_text_2"></p>
+
+      <form id="pro-form" novalidate>
+        <label for="pro-email" class="label" data-i18n="pro_email_label"></label>
+        <input id="pro-email" type="email" inputmode="email" autocomplete="email" maxlength="254" required
+               data-i18n-attr="placeholder:pro_email_placeholder">
+        <label class="consent">
+          <input id="pro-consent" type="checkbox" required>
+          <span data-i18n="pro_consent"></span>
+        </label>
+        <p class="privacy-link"><a href="confidentialite.html" target="_blank" rel="noopener" data-i18n="pro_privacy_link"></a></p>
+        <p class="form-error" id="pro-error" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block" id="pro-submit" data-i18n="pro_submit"></button>
+      </form>
+
+      <div id="pro-success" class="pro-success" hidden>
+        <p class="big-emoji" aria-hidden="true">✅</p>
+        <p data-i18n="pro_success"></p>
+        <button type="button" class="btn btn-ghost btn-block" data-close-pro data-i18n="pro_close"></button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/score.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
